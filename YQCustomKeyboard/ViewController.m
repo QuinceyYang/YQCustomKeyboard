@@ -7,8 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "YQInputCarnumberView.h"
+#import "YQCustomKeyboardView.h"
 
-@interface ViewController ()
+@interface ViewController () <YQCustomKeyboardViewDelegate,UITextFieldDelegate>
+
+@property (strong, nonatomic) UITextField *textField;
 
 @end
 
@@ -17,6 +21,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    switch (2) {
+        case 1:
+        {
+            YQInputCarnumberView *inputCarnumberView = [[YQInputCarnumberView alloc] init];
+            inputCarnumberView.titleLab.text = @"请输入车牌号";
+            [self.view addSubview:inputCarnumberView];
+        }
+            break;
+        case 2:
+        {
+            _textField = [[UITextField alloc] initWithFrame:CGRectMake(20, 90, 200, 44)];
+            _textField.borderStyle = UITextBorderStyleLine;
+            _textField.placeholder = @"请输入";
+            _textField.inputView = [YQCustomKeyboardView keyboardWithType:YQCustomKeyboardViewTypeDefault delegate:self];
+            _textField.delegate = self;
+            [self.view addSubview:_textField];
+        }
+            break;
+
+        default:
+            break;
+    }
+    
+    
+    
+
 }
 
 
@@ -25,5 +56,28 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - < YQCustomKeyboardViewDelegate >
+- (void)customKeyboardInputKey:(NSString *)key
+{
+    NSLog(@"key = %@",key);
+    if (self.textField.text) {
+        self.textField.text = [self.textField.text stringByAppendingString:key];
+    }
+    else {
+        self.textField.text = key;
+    }
+    
+}
+
+- (void)customKeyboardDeleteKey
+{
+    if (self.textField.text) {
+        if (self.textField.text.length>0) {
+            self.textField.text = [self.textField.text substringToIndex:self.textField.text.length-1];
+        }
+    }
+    else {
+    }
+}
 
 @end

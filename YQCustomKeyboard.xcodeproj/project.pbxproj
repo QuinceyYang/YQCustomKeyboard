@@ -13,6 +13,8 @@
 		4D2C0379214A59DE007FDB02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D2C0378214A59DE007FDB02 /* Assets.xcassets */; };
 		4D2C037C214A59DE007FDB02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D2C037A214A59DE007FDB02 /* LaunchScreen.storyboard */; };
 		4D2C037F214A59DE007FDB02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2C037E214A59DE007FDB02 /* main.m */; };
+		4D2C0388214A5A7E007FDB02 /* YQCustomKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2C0387214A5A7E007FDB02 /* YQCustomKeyboardView.m */; };
+		4D2C038B214A5ABF007FDB02 /* YQInputCarnumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2C038A214A5ABF007FDB02 /* YQInputCarnumberView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,10 @@
 		4D2C037B214A59DE007FDB02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D2C037D214A59DE007FDB02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D2C037E214A59DE007FDB02 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4D2C0386214A5A7E007FDB02 /* YQCustomKeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQCustomKeyboardView.h; sourceTree = "<group>"; };
+		4D2C0387214A5A7E007FDB02 /* YQCustomKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQCustomKeyboardView.m; sourceTree = "<group>"; };
+		4D2C0389214A5ABF007FDB02 /* YQInputCarnumberView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQInputCarnumberView.h; sourceTree = "<group>"; };
+		4D2C038A214A5ABF007FDB02 /* YQInputCarnumberView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQInputCarnumberView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,7 @@
 		4D2C036E214A59DC007FDB02 /* YQCustomKeyboard */ = {
 			isa = PBXGroup;
 			children = (
+				4D2C0385214A5A25007FDB02 /* Source */,
 				4D2C036F214A59DC007FDB02 /* AppDelegate.h */,
 				4D2C0370214A59DC007FDB02 /* AppDelegate.m */,
 				4D2C0372214A59DC007FDB02 /* ViewController.h */,
@@ -69,6 +76,17 @@
 				4D2C037E214A59DE007FDB02 /* main.m */,
 			);
 			path = YQCustomKeyboard;
+			sourceTree = "<group>";
+		};
+		4D2C0385214A5A25007FDB02 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				4D2C0386214A5A7E007FDB02 /* YQCustomKeyboardView.h */,
+				4D2C0387214A5A7E007FDB02 /* YQCustomKeyboardView.m */,
+				4D2C0389214A5ABF007FDB02 /* YQInputCarnumberView.h */,
+				4D2C038A214A5ABF007FDB02 /* YQInputCarnumberView.m */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,8 +159,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D2C038B214A5ABF007FDB02 /* YQInputCarnumberView.m in Sources */,
 				4D2C0374214A59DC007FDB02 /* ViewController.m in Sources */,
 				4D2C037F214A59DE007FDB02 /* main.m in Sources */,
+				4D2C0388214A5A7E007FDB02 /* YQCustomKeyboardView.m in Sources */,
 				4D2C0371214A59DC007FDB02 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

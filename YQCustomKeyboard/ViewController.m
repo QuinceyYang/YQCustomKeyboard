@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "YQInputCarnumberView.h"
 #import "YQCustomKeyboardView.h"
+#import "YQInputPasswordView.h"
 
 @interface ViewController () <YQCustomKeyboardViewDelegate,UITextFieldDelegate>
 
@@ -22,7 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    switch (2) {
+    switch (3) {
         case 1:
         {
             YQInputCarnumberView *inputCarnumberView = [[YQInputCarnumberView alloc] init];
@@ -38,6 +39,12 @@
             _textField.inputView = [YQCustomKeyboardView keyboardWithType:YQCustomKeyboardViewTypeDefault delegate:self];
             _textField.delegate = self;
             [self.view addSubview:_textField];
+        }
+            break;
+        case 3:
+        {
+            YQInputPasswordView *inputPasswordView = [[YQInputPasswordView alloc] init];
+            [self.view addSubview:inputPasswordView];
         }
             break;
 

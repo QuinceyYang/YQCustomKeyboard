@@ -14,7 +14,7 @@
 
 @property (strong, nonatomic) UITextField *textField;
 @property (strong, nonatomic) NSMutableArray <UILabel *>*labelArr;
-//@property (strong, nonatomic) UIButton *newpowerCarBtn;
+
 @end
 
 @implementation YQInputCarnumberView
@@ -108,7 +108,7 @@
         newpowerCarBtn.titleLabel.font = [UIFont systemFontOfSize:11];
         [newpowerCarBtn addTarget:self action:@selector(tapEnableNewpowerCar:) forControlEvents:UIControlEventTouchUpInside];
         [inputView addSubview:newpowerCarBtn];
-        //self.newpowerCarBtn = newpowerCarBtn;
+        self.newpowerCarBtn = newpowerCarBtn;
         
         UIButton *cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 137, 100, 45)];
         cancelBtn.layer.cornerRadius = 3;

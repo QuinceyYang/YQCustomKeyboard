@@ -11,6 +11,7 @@
 #define kCustomKeyboardHeight ([UIScreen mainScreen].bounds.size.width>375?200:176)
 #define kCharacterList  @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"0",@"Q",@"W",@"E",@"R",@"T",@"Y",@"U",@"I",@"O",@"P",@"A",@"S",@"D",@"F",@"G",@"H",@"J",@"K",@"L",@"Z",@"X",@"C",@"V",@"B",@"N",@"M"]
 #define kProvinceList   @[@"京",@"沪",@"粤",@"津",@"冀",@"晋",@"蒙",@"辽",@"吉",@"黑",@"苏",@"浙",@"皖",@"闽",@"赣",@"鲁",@"豫",@"鄂",@"湘",@"桂",@"琼",@"渝",@"川",@"桂",@"云",@"藏",@"陕",@"甘",@"青",@"宁",@"新",@"港",@"澳"]
+#define kPasswordList  @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"0"]
 
 @interface YQCustomKeyboardView ()
 
@@ -332,6 +333,74 @@
         }
             break;
             
+        case YQCustomKeyboardViewTypePassword:
+        {
+            //字符键盘A~Z 0~9
+            NSArray *keyArr = kPasswordList;
+            UIControl *containerView = [[UIControl alloc] initWithFrame:self.bounds];
+            containerView.backgroundColor = [UIColor colorWithRed:207/255.0 green:212/255.0 blue:217/255.0 alpha:1];
+            containerView.tag = 10000;
+            [self addSubview:containerView];
+            CGFloat leftEdgeInsets = 0;
+            CGFloat spacing = 1;
+            CGFloat btnWidth = (containerView.frame.size.width-2*leftEdgeInsets-2*spacing)/3;
+            CGFloat tmpY = 0;
+            CGFloat btnHeight = (containerView.frame.size.height-3*1)/4;
+            for (NSInteger i=0; i<3 && i<keyArr.count; i++) {
+                UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(leftEdgeInsets+i*(btnWidth+spacing), tmpY, btnWidth, btnHeight)];
+                btn.tag = 2000+i;
+                [btn setBackgroundImage:[[self class] imageWithColor:UIColor.whiteColor] forState:UIControlStateNormal];
+                [btn setTitle:[NSString stringWithFormat:@"%@",keyArr[i]] forState:UIControlStateNormal];
+                [btn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+                [btn addTarget:self action:@selector(tapInputKey:) forControlEvents:UIControlEventTouchUpInside];
+                [containerView addSubview:btn];
+            }
+            leftEdgeInsets = 0;
+            tmpY += btnHeight+1;
+            for (NSInteger i=3; i<6 && i<keyArr.count; i++) {
+                UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(leftEdgeInsets+(i-3)*(btnWidth+spacing), tmpY, btnWidth, btnHeight)];
+                btn.tag = 2000+i;
+                [btn setBackgroundImage:[[self class] imageWithColor:UIColor.whiteColor] forState:UIControlStateNormal];
+                [btn setTitle:[NSString stringWithFormat:@"%@",keyArr[i]] forState:UIControlStateNormal];
+                [btn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+                [btn addTarget:self action:@selector(tapInputKey:) forControlEvents:UIControlEventTouchUpInside];
+                [containerView addSubview:btn];
+            }
+            leftEdgeInsets = 0;
+            tmpY += btnHeight+1;
+            for (NSInteger i=6; i<9 && i<keyArr.count; i++) {
+                UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(leftEdgeInsets+(i-6)*(btnWidth+spacing), tmpY, btnWidth, btnHeight)];
+                btn.tag = 2000+i;
+                [btn setBackgroundImage:[[self class] imageWithColor:UIColor.whiteColor] forState:UIControlStateNormal];
+                [btn setTitle:[NSString stringWithFormat:@"%@",keyArr[i]] forState:UIControlStateNormal];
+                [btn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+                [btn addTarget:self action:@selector(tapInputKey:) forControlEvents:UIControlEventTouchUpInside];
+                [containerView addSubview:btn];
+            }
+            leftEdgeInsets = btnWidth+1;
+            tmpY += btnHeight+1;
+            CGFloat tmpX;
+            
+            for (NSInteger i=9; i<10 && i<keyArr.count; i++) {
+                UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(leftEdgeInsets+(i-9)*(btnWidth+spacing), tmpY, btnWidth, btnHeight)];
+                btn.tag = 2000+i;
+                [btn setBackgroundImage:[[self class] imageWithColor:UIColor.whiteColor] forState:UIControlStateNormal];
+                [btn setTitle:[NSString stringWithFormat:@"%@",keyArr[i]] forState:UIControlStateNormal];
+                [btn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+                [btn addTarget:self action:@selector(tapInputKey:) forControlEvents:UIControlEventTouchUpInside];
+                [containerView addSubview:btn];
+                tmpX = CGRectGetMaxX(btn.frame);
+            }
+            //删除按钮
+            UIButton *delBtn = [[UIButton alloc] initWithFrame:CGRectMake(tmpX+1, tmpY, btnWidth, btnHeight)];
+            [delBtn setBackgroundImage:[[self class] imageWithColor:UIColor.whiteColor] forState:UIControlStateNormal];
+            [delBtn setTitle:[NSString stringWithFormat:@"%@",@"删除"] forState:UIControlStateNormal];
+            [delBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+            [delBtn addTarget:self action:@selector(tapDeleteKey:) forControlEvents:UIControlEventTouchUpInside];
+            [containerView addSubview:delBtn];
+        }
+            break;
+
         default:
             break;
     }

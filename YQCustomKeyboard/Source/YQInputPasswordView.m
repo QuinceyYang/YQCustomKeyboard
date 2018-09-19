@@ -51,7 +51,7 @@
             [inputView addSubview:lab];
         }
         
-        YQCustomKeyboardView *keyboardView = [YQCustomKeyboardView keyboardWithType:YQCustomKeyboardViewTypeCharacter delegate:self];
+        YQCustomKeyboardView *keyboardView = [YQCustomKeyboardView keyboardWithType:YQCustomKeyboardViewTypePassword delegate:self];
         [self addSubview:keyboardView];
         keyboardView.frame = CGRectOffset(keyboardView.frame, 0, [UIScreen mainScreen].bounds.size.height-keyboardView.frame.size.height);
 
@@ -103,7 +103,7 @@
         _passwordStr = key;
     }
     NSLog(@"_passwordStr = %@",_passwordStr);
-    _labelArr[_passwordStr.length-1].text = @"*";
+    _labelArr[_passwordStr.length-1].text = @"●";
 }
 
 - (void)customKeyboardDeleteKey

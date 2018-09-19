@@ -12,6 +12,7 @@ typedef NS_ENUM(NSInteger, YQCustomKeyboardViewType) {
     YQCustomKeyboardViewTypeDefault     = 0, //第一个是省键盘，第二个是字符与数字键盘
     YQCustomKeyboardViewTypeProvince    = 1, //省简称
     YQCustomKeyboardViewTypeCharacter   = 2,  //字符与数字键盘
+    YQCustomKeyboardViewTypePassword    = 3,  //密码键盘0~9
 };
 
 @protocol YQCustomKeyboardViewDelegate <NSObject>

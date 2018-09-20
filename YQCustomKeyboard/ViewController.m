@@ -28,6 +28,7 @@
         {
             YQInputCarnumberView *inputCarnumberView = [[YQInputCarnumberView alloc] init];
             inputCarnumberView.titleLab.text = @"请输入车牌号";
+            inputCarnumberView.newpowerCarBtnIv.image = [UIImage imageNamed:@"icon_add"];
             [self.view addSubview:inputCarnumberView];
         }
             break;

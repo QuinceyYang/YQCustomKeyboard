@@ -125,6 +125,7 @@
                 [changeBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
                 [changeBtn addTarget:self action:@selector(tapChangeKeyboard:) forControlEvents:UIControlEventTouchUpInside];
                 [containerView addSubview:changeBtn];
+                self.changeBtn = changeBtn;
                 //删除按钮
                 UIButton *delBtn = [[UIButton alloc] initWithFrame:CGRectMake(containerView.frame.size.width-12-50, tmpY, 50, btnHeight)];
                 [delBtn setBackgroundImage:[[self class] imageWithColor:UIColor.whiteColor] forState:UIControlStateNormal];
@@ -132,6 +133,7 @@
                 [delBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
                 [delBtn addTarget:self action:@selector(tapDeleteKey:) forControlEvents:UIControlEventTouchUpInside];
                 [containerView addSubview:delBtn];
+                self.deleteBtn = delBtn;
             }
 
             //省简称
@@ -194,6 +196,7 @@
                 [changeBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
                 [changeBtn addTarget:self action:@selector(tapChangeKeyboard:) forControlEvents:UIControlEventTouchUpInside];
                 [containerView addSubview:changeBtn];
+                self.secondChangeBtn = changeBtn;
                 //删除按钮
                 UIButton *delBtn = [[UIButton alloc] initWithFrame:CGRectMake(containerView.frame.size.width-12-50, tmpY, 50, btnHeight)];
                 [delBtn setBackgroundImage:[[self class] imageWithColor:UIColor.whiteColor] forState:UIControlStateNormal];
@@ -201,6 +204,7 @@
                 [delBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
                 [delBtn addTarget:self action:@selector(tapDeleteKey:) forControlEvents:UIControlEventTouchUpInside];
                 [containerView addSubview:delBtn];
+                self.secondDeleteBtn = delBtn;
             }
 
         }
@@ -266,6 +270,7 @@
             [delBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
             [delBtn addTarget:self action:@selector(tapDeleteKey:) forControlEvents:UIControlEventTouchUpInside];
             [containerView addSubview:delBtn];
+            self.deleteBtn = delBtn;
         }
             break;
         case YQCustomKeyboardViewTypeCharacter:
@@ -330,6 +335,7 @@
             [delBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
             [delBtn addTarget:self action:@selector(tapDeleteKey:) forControlEvents:UIControlEventTouchUpInside];
             [containerView addSubview:delBtn];
+            self.deleteBtn = delBtn;
         }
             break;
             
@@ -379,8 +385,7 @@
             }
             leftEdgeInsets = btnWidth+1;
             tmpY += btnHeight+1;
-            CGFloat tmpX;
-            
+            CGFloat tmpX = 0.0;            
             for (NSInteger i=9; i<10 && i<keyArr.count; i++) {
                 UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(leftEdgeInsets+(i-9)*(btnWidth+spacing), tmpY, btnWidth, btnHeight)];
                 btn.tag = 2000+i;
@@ -398,6 +403,7 @@
             [delBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
             [delBtn addTarget:self action:@selector(tapDeleteKey:) forControlEvents:UIControlEventTouchUpInside];
             [containerView addSubview:delBtn];
+            self.deleteBtn = delBtn;
         }
             break;
 

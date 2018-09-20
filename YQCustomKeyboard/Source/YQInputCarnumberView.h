@@ -11,7 +11,8 @@
 @interface YQInputCarnumberView : UIView
 
 @property (strong, nonatomic) UILabel *titleLab;
-@property (strong, nonatomic) UIButton *newpowerCarBtn;///< 使能新能源车按钮，可自定义其风格
+@property (strong, nonatomic) UIImageView *newpowerCarBtnIv;///< 使能新能源车按钮的image，可以修改风格
+@property (strong, nonatomic) UILabel *newpowerCarBtnLab;///< 使能新能源车按钮的label，可以修改风格
 @property (copy, nonatomic) void (^clickCancelBlock)(void);
 @property (copy, nonatomic) void (^clickConfirmBlock)(NSString *text);
 

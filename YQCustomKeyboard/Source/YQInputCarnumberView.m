@@ -25,13 +25,10 @@
     if (self) {
         self.frame = [UIScreen mainScreen].bounds;
         self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
-        //self.userInteractionEnabled = YES;
-        //[self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBackground:)]];
         UIView *inputView = [[UIView alloc] initWithFrame:CGRectMake(12, 175, [UIScreen mainScreen].bounds.size.width-25, 200)];
         inputView.backgroundColor = UIColor.whiteColor;
         [self addSubview:inputView];
-        //inputView.userInteractionEnabled = YES;
-        //[inputView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMaskView:)]];
+        inputView.layer.cornerRadius = 6;
         
         UILabel *titleLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, inputView.frame.size.width, 22)];
         titleLab.text = @"车位号：----";
@@ -98,17 +95,29 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldEditChanged:) name:UITextFieldTextDidChangeNotification object:nil];
         
         _labelArr.lastObject.hidden = YES;
-        UIButton *newpowerCarBtn = [[UIButton alloc] initWithFrame:_labelArr.lastObject.frame];
+        UIControl *newpowerCarBtn = [[UIControl alloc] initWithFrame:_labelArr.lastObject.frame];
         newpowerCarBtn.backgroundColor = UIColor.whiteColor;
         newpowerCarBtn.layer.borderWidth = 0.667;
         newpowerCarBtn.layer.borderColor = [UIColor colorWithRed:178/255.0 green:179/255.0 blue:180/255.0 alpha:1].CGColor;
-        [newpowerCarBtn setImage:[UIImage imageNamed:@"icon_add"] forState:UIControlStateNormal];
-        [newpowerCarBtn setTitle:@"新能源" forState:UIControlStateNormal];
-        [newpowerCarBtn setTitleColor:[UIColor colorWithRed:152.0/255.0 green:153.0/255.0 blue:154.0/255.0 alpha:1] forState:UIControlStateNormal];
-        newpowerCarBtn.titleLabel.font = [UIFont systemFontOfSize:11];
+        //[newpowerCarBtn setImage:[UIImage imageNamed:@"icon_add"] forState:UIControlStateNormal];
+        //[newpowerCarBtn setTitle:@"新能源" forState:UIControlStateNormal];
+        //[newpowerCarBtn setTitleColor:[UIColor colorWithRed:152.0/255.0 green:153.0/255.0 blue:154.0/255.0 alpha:1] forState:UIControlStateNormal];
+        //newpowerCarBtn.titleLabel.font = [UIFont systemFontOfSize:11];
         [newpowerCarBtn addTarget:self action:@selector(tapEnableNewpowerCar:) forControlEvents:UIControlEventTouchUpInside];
         [inputView addSubview:newpowerCarBtn];
-        self.newpowerCarBtn = newpowerCarBtn;
+        {
+            UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(0, 6, newpowerCarBtn.frame.size.width, 0.55*newpowerCarBtn.frame.size.height-6)];
+            iv.contentMode = UIViewContentModeCenter;
+            [newpowerCarBtn addSubview:iv];
+            self.newpowerCarBtnIv = iv;
+            UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0.55*newpowerCarBtn.frame.size.height, newpowerCarBtn.frame.size.width, 0.45*newpowerCarBtn.frame.size.height-4)];
+            lab.text = @"新能源";
+            lab.textColor = [UIColor colorWithRed:152.0/255.0 green:153.0/255.0 blue:154.0/255.0 alpha:1];
+            lab.textAlignment = NSTextAlignmentCenter;
+            lab.font = [UIFont systemFontOfSize:11];
+            [newpowerCarBtn addSubview:lab];
+            self.newpowerCarBtnLab = lab;
+        }
         
         UIButton *cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 137, 100, 45)];
         cancelBtn.layer.cornerRadius = 3;

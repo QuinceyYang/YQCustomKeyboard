@@ -15,6 +15,8 @@
 		4D2C037F214A59DE007FDB02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2C037E214A59DE007FDB02 /* main.m */; };
 		4D2C0388214A5A7E007FDB02 /* YQCustomKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2C0387214A5A7E007FDB02 /* YQCustomKeyboardView.m */; };
 		4D2C038B214A5ABF007FDB02 /* YQInputCarnumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2C038A214A5ABF007FDB02 /* YQInputCarnumberView.m */; };
+		4D3F876F215340E1009E5C07 /* icon_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D3F876D215340E1009E5C07 /* icon_add@2x.png */; };
+		4D3F8770215340E1009E5C07 /* icon_add@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D3F876E215340E1009E5C07 /* icon_add@3x.png */; };
 		4D67DB9B2151156B002683EF /* YQInputPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D67DB9A2151156B002683EF /* YQInputPasswordView.m */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,8 @@
 		4D2C0387214A5A7E007FDB02 /* YQCustomKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQCustomKeyboardView.m; sourceTree = "<group>"; };
 		4D2C0389214A5ABF007FDB02 /* YQInputCarnumberView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQInputCarnumberView.h; sourceTree = "<group>"; };
 		4D2C038A214A5ABF007FDB02 /* YQInputCarnumberView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQInputCarnumberView.m; sourceTree = "<group>"; };
+		4D3F876D215340E1009E5C07 /* icon_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_add@2x.png"; sourceTree = "<group>"; };
+		4D3F876E215340E1009E5C07 /* icon_add@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_add@3x.png"; sourceTree = "<group>"; };
 		4D67DB992151156B002683EF /* YQInputPasswordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQInputPasswordView.h; sourceTree = "<group>"; };
 		4D67DB9A2151156B002683EF /* YQInputPasswordView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQInputPasswordView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +71,7 @@
 		4D2C036E214A59DC007FDB02 /* YQCustomKeyboard */ = {
 			isa = PBXGroup;
 			children = (
+				4D3F876C215340E1009E5C07 /* Resources */,
 				4D2C0385214A5A25007FDB02 /* Source */,
 				4D2C036F214A59DC007FDB02 /* AppDelegate.h */,
 				4D2C0370214A59DC007FDB02 /* AppDelegate.m */,
@@ -92,6 +97,15 @@
 				4D67DB9A2151156B002683EF /* YQInputPasswordView.m */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		4D3F876C215340E1009E5C07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4D3F876D215340E1009E5C07 /* icon_add@2x.png */,
+				4D3F876E215340E1009E5C07 /* icon_add@3x.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +166,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D2C037C214A59DE007FDB02 /* LaunchScreen.storyboard in Resources */,
+				4D3F876F215340E1009E5C07 /* icon_add@2x.png in Resources */,
+				4D3F8770215340E1009E5C07 /* icon_add@3x.png in Resources */,
 				4D2C0379214A59DE007FDB02 /* Assets.xcassets in Resources */,
 				4D2C0377214A59DC007FDB02 /* Main.storyboard in Resources */,
 			);

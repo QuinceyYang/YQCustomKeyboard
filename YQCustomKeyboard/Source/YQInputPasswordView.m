@@ -28,6 +28,7 @@
         UIView *inputView = [[UIView alloc] initWithFrame:CGRectMake(12, 175, [UIScreen mainScreen].bounds.size.width-25, 200)];
         inputView.backgroundColor = UIColor.whiteColor;
         [self addSubview:inputView];
+        inputView.layer.cornerRadius = 6;
         
         UILabel *titleLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, inputView.frame.size.width, 22)];
         titleLab.text = @"请输入密码";

@@ -24,6 +24,11 @@ typedef NS_ENUM(NSInteger, YQCustomKeyboardViewType) {
 
 @interface YQCustomKeyboardView : UIView
 
+@property (strong, nonatomic) UIButton *changeBtn;///< 切换按钮
+@property (strong, nonatomic) UIButton *deleteBtn;///< 删除按钮
+@property (strong, nonatomic) UIButton *secondChangeBtn;///< 切换按钮
+@property (strong, nonatomic) UIButton *secondDeleteBtn;///< 删除按钮
+
 @property (weak, nonatomic) id <YQCustomKeyboardViewDelegate> delegate;
 
 + (instancetype)keyboardWithType:(YQCustomKeyboardViewType)keyboardType delegate:(id <YQCustomKeyboardViewDelegate>)delegate;

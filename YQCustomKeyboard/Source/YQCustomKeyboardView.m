@@ -362,57 +362,35 @@ static CGFloat kCustomKeyboardHeight = 176;
             containerView.backgroundColor = [UIColor colorWithRed:207/255.0 green:212/255.0 blue:217/255.0 alpha:1];
             containerView.tag = 10000;
             [self addSubview:containerView];
-            CGFloat leftEdgeInsets = 0;
-            CGFloat spacing = 1;
-            CGFloat btnWidth = (containerView.frame.size.width-2*leftEdgeInsets-2*spacing)/3;
+            CGFloat spacing = 0.5;
+            CGFloat btnWidth = (containerView.frame.size.width-2*spacing)/3;
+            CGFloat btnHeight = (containerView.frame.size.height-3*spacing)/4;
             CGFloat tmpY = 0;
-            CGFloat btnHeight = (containerView.frame.size.height-3*1)/4;
-            for (NSInteger i=0; i<3 && i<keyArr.count; i++) {
-                UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(leftEdgeInsets+i*(btnWidth+spacing), tmpY, btnWidth, btnHeight)];
+            for (NSInteger i=0; i<9 && i<keyArr.count; i++) {
+                CGFloat x = (i%3)*(btnWidth+spacing);
+                CGFloat y = (i-i%3)/3*(btnHeight+spacing);
+                UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(x, y, btnWidth, btnHeight)];
                 btn.tag = 2000+i;
                 [btn setBackgroundImage:[[self class] imageWithColor:UIColor.whiteColor] forState:UIControlStateNormal];
                 [btn setTitle:[NSString stringWithFormat:@"%@",keyArr[i]] forState:UIControlStateNormal];
                 [btn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
                 [btn addTarget:self action:@selector(tapInputKey:) forControlEvents:UIControlEventTouchUpInside];
                 [containerView addSubview:btn];
+                tmpY = CGRectGetMaxY(btn.frame) + spacing;
             }
-            leftEdgeInsets = 0;
-            tmpY += btnHeight+1;
-            for (NSInteger i=3; i<6 && i<keyArr.count; i++) {
-                UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(leftEdgeInsets+(i-3)*(btnWidth+spacing), tmpY, btnWidth, btnHeight)];
-                btn.tag = 2000+i;
-                [btn setBackgroundImage:[[self class] imageWithColor:UIColor.whiteColor] forState:UIControlStateNormal];
-                [btn setTitle:[NSString stringWithFormat:@"%@",keyArr[i]] forState:UIControlStateNormal];
-                [btn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
-                [btn addTarget:self action:@selector(tapInputKey:) forControlEvents:UIControlEventTouchUpInside];
-                [containerView addSubview:btn];
-            }
-            leftEdgeInsets = 0;
-            tmpY += btnHeight+1;
-            for (NSInteger i=6; i<9 && i<keyArr.count; i++) {
-                UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(leftEdgeInsets+(i-6)*(btnWidth+spacing), tmpY, btnWidth, btnHeight)];
-                btn.tag = 2000+i;
-                [btn setBackgroundImage:[[self class] imageWithColor:UIColor.whiteColor] forState:UIControlStateNormal];
-                [btn setTitle:[NSString stringWithFormat:@"%@",keyArr[i]] forState:UIControlStateNormal];
-                [btn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
-                [btn addTarget:self action:@selector(tapInputKey:) forControlEvents:UIControlEventTouchUpInside];
-                [containerView addSubview:btn];
-            }
-            leftEdgeInsets = btnWidth+1;
-            tmpY += btnHeight+1;
-            CGFloat tmpX = 0.0;            
+            CGFloat tmpX = 0.0;
             for (NSInteger i=9; i<10 && i<keyArr.count; i++) {
-                UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(leftEdgeInsets+(i-9)*(btnWidth+spacing), tmpY, btnWidth, btnHeight)];
+                UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(btnWidth+spacing+(i-9)*(btnWidth+spacing), tmpY, btnWidth, btnHeight)];
                 btn.tag = 2000+i;
                 [btn setBackgroundImage:[[self class] imageWithColor:UIColor.whiteColor] forState:UIControlStateNormal];
                 [btn setTitle:[NSString stringWithFormat:@"%@",keyArr[i]] forState:UIControlStateNormal];
                 [btn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
                 [btn addTarget:self action:@selector(tapInputKey:) forControlEvents:UIControlEventTouchUpInside];
                 [containerView addSubview:btn];
-                tmpX = CGRectGetMaxX(btn.frame);
+                tmpX = CGRectGetMaxX(btn.frame) + spacing;
             }
             //删除按钮
-            UIButton *delBtn = [[UIButton alloc] initWithFrame:CGRectMake(tmpX+1, tmpY, btnWidth, btnHeight)];
+            UIButton *delBtn = [[UIButton alloc] initWithFrame:CGRectMake(tmpX, tmpY, btnWidth, btnHeight)];
             [delBtn setBackgroundImage:[[self class] imageWithColor:UIColor.whiteColor] forState:UIControlStateNormal];
             [delBtn setTitle:[NSString stringWithFormat:@"%@",@"删除"] forState:UIControlStateNormal];
             [delBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
@@ -440,10 +418,12 @@ static CGFloat kCustomKeyboardHeight = 176;
             [containerView addSubview:topView];
             //删除按钮
             UIButton *delBtn = [[UIButton alloc] initWithFrame:CGRectMake(containerView.frame.size.width-btnWidth, 0, btnWidth, 44)];
+            [delBtn setImage:[[self class] imageDelete] forState:UIControlStateNormal];
             [delBtn setBackgroundImage:[[self class] imageWithColor:UIColor.whiteColor] forState:UIControlStateNormal];
-            [delBtn setTitle:[NSString stringWithFormat:@"%@",@"删除"] forState:UIControlStateNormal];
+            //[delBtn setTitle:[NSString stringWithFormat:@"%@",@"删除"] forState:UIControlStateNormal];
             [delBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
             [delBtn addTarget:self action:@selector(tapDeleteKey:) forControlEvents:UIControlEventTouchUpInside];
+            delBtn.titleLabel.font = [UIFont systemFontOfSize:18];
             [containerView addSubview:delBtn];
             self.deleteBtn = delBtn;
             
@@ -457,6 +437,7 @@ static CGFloat kCustomKeyboardHeight = 176;
                 [btn setTitle:[NSString stringWithFormat:@"%@",keyArr[i]] forState:UIControlStateNormal];
                 [btn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
                 [btn addTarget:self action:@selector(tapInputKey:) forControlEvents:UIControlEventTouchUpInside];
+                btn.titleLabel.font = [UIFont systemFontOfSize:23];
                 [containerView addSubview:btn];
             }
         }
@@ -514,6 +495,56 @@ static CGFloat kCustomKeyboardHeight = 176;
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(context, [color CGColor]);
     CGContextFillRect(context, rect);
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return img;
+}
+
++ (UIImage *)imageDelete {
+    
+    CGRect rect = CGRectMake(0, 0, 40, 20);
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.0f);
+    {
+        //// Color Declarations
+        UIColor* color = [UIColor colorWithRed: 0 green: 0 blue: 0 alpha: 1];
+        
+        //// Bezier Drawing
+        UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+        [bezierPath moveToPoint: CGPointMake(14, 0.5)];
+        [bezierPath addCurveToPoint: CGPointMake(1.5, 10) controlPoint1: CGPointMake(1.5, 10) controlPoint2: CGPointMake(1.5, 10)];
+        [bezierPath addLineToPoint: CGPointMake(14, 19.5)];
+        [bezierPath addLineToPoint: CGPointMake(39, 19.5)];
+        [bezierPath addLineToPoint: CGPointMake(39, 0.5)];
+        [bezierPath addLineToPoint: CGPointMake(14, 0.5)];
+        [[UIColor colorWithRed:30.0/255.0 green:30.0/255.0 blue:30.0/255.0 alpha:1.0] setFill];
+        [bezierPath fill];
+        [color setStroke];
+        bezierPath.lineWidth = 1;
+        [bezierPath stroke];
+        
+        
+        //// Bezier 2 Drawing
+        UIBezierPath* bezier2Path = [UIBezierPath bezierPath];
+        [bezier2Path moveToPoint: CGPointMake(18.5, 3.5)];
+        [bezier2Path addCurveToPoint: CGPointMake(32.5, 16.5) controlPoint1: CGPointMake(32.5, 16.5) controlPoint2: CGPointMake(32.5, 16.5)];
+        [UIColor.blackColor setFill];
+        [bezier2Path fill];
+        [UIColor.whiteColor setStroke];
+        bezier2Path.lineWidth = 1.5;
+        [bezier2Path stroke];
+        
+        
+        //// Bezier 3 Drawing
+        UIBezierPath* bezier3Path = [UIBezierPath bezierPath];
+        [bezier3Path moveToPoint: CGPointMake(32.5, 3.5)];
+        [bezier3Path addCurveToPoint: CGPointMake(18.5, 16.5) controlPoint1: CGPointMake(18.5, 16.5) controlPoint2: CGPointMake(18.5, 16.5)];
+        [UIColor.blackColor setFill];
+        [bezier3Path fill];
+        [UIColor.whiteColor setStroke];
+        bezier3Path.lineWidth = 1.5;
+        [bezier3Path stroke];
+    }
+    
     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return img;

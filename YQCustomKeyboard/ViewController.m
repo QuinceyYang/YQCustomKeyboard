@@ -48,6 +48,16 @@
             [self.view addSubview:inputPasswordView];
         }
             break;
+        case 4:
+        {
+            _textField = [[UITextField alloc] initWithFrame:CGRectMake(20, 90, UIScreen.mainScreen.bounds.size.width-40, 44)];
+            _textField.borderStyle = UITextBorderStyleLine;
+            _textField.placeholder = @"请输入";
+            _textField.inputView = [YQCustomKeyboardView keyboardWithType:YQCustomKeyboardViewTypeCalculator delegate:self];
+            _textField.delegate = self;
+            [self.view addSubview:_textField];
+        }
+            break;
 
         default:
             break;

@@ -10,3 +10,7 @@
 ### 密码输入  
 ![](https://raw.githubusercontent.com/QuinceyYang/YQCustomKeyboard/master/gif_show3.gif)  
 
+### 计算器键盘  
+![](https://raw.githubusercontent.com/QuinceyYang/YQCustomKeyboard/master/photo_show.gif)  
+
+###End

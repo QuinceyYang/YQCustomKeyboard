@@ -510,12 +510,12 @@ static CGFloat kCustomKeyboardHeight = 176;
         
         //// Bezier Drawing
         UIBezierPath* bezierPath = [UIBezierPath bezierPath];
-        [bezierPath moveToPoint: CGPointMake(14, 0.5)];
+        [bezierPath moveToPoint: CGPointMake(13, 0.5)];
         [bezierPath addCurveToPoint: CGPointMake(1.5, 10) controlPoint1: CGPointMake(1.5, 10) controlPoint2: CGPointMake(1.5, 10)];
-        [bezierPath addLineToPoint: CGPointMake(14, 19.5)];
+        [bezierPath addLineToPoint: CGPointMake(13, 19.5)];
         [bezierPath addLineToPoint: CGPointMake(39, 19.5)];
         [bezierPath addLineToPoint: CGPointMake(39, 0.5)];
-        [bezierPath addLineToPoint: CGPointMake(14, 0.5)];
+        [bezierPath addLineToPoint: CGPointMake(13, 0.5)];
         [[UIColor colorWithRed:30.0/255.0 green:30.0/255.0 blue:30.0/255.0 alpha:1.0] setFill];
         [bezierPath fill];
         [color setStroke];

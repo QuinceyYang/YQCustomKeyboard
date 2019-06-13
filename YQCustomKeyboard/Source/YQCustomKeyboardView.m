@@ -452,14 +452,14 @@ static CGFloat kCustomKeyboardHeight = 176;
 
 - (void)tapInputKey:(UIButton *)sender
 {
-    if ([self.delegate respondsToSelector:@selector(customKeyboardInputKey:)]) {
-        [self.delegate customKeyboardInputKey:[sender titleForState:UIControlStateNormal]];
+    if ([self.delegate respondsToSelector:@selector(customKeyboard:inputKey:)]) {
+        [self.delegate customKeyboard:self inputKey:[sender titleForState:UIControlStateNormal]];
     }
 }
 - (void)tapDeleteKey:(UIButton *)sender
 {
-    if ([self.delegate respondsToSelector:@selector(customKeyboardDeleteKey)]) {
-        [self.delegate customKeyboardDeleteKey];
+    if ([self.delegate respondsToSelector:@selector(customKeyboardDeleteKey:)]) {
+        [self.delegate customKeyboardDeleteKey:self];
     }
 }
 

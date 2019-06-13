@@ -90,7 +90,7 @@
 
 
 #pragma mark - < YQCustomKeyboardViewDelegate >
-- (void)customKeyboardInputKey:(NSString *)key
+- (void)customKeyboard:(YQCustomKeyboardView *)keyboardView inputKey:(NSString *)key
 {
     NSLog(@"key = %@",key);
     if (_passwordStr) {
@@ -107,7 +107,7 @@
     _labelArr[_passwordStr.length-1].text = @"●";
 }
 
-- (void)customKeyboardDeleteKey
+- (void)customKeyboardDeleteKey:(YQCustomKeyboardView *)keyboardView
 {
     if (_passwordStr.length <= 0) {
         NSLog(@"密码已空");

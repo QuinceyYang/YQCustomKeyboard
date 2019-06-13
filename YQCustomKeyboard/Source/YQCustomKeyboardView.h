@@ -16,12 +16,13 @@ typedef NS_ENUM(NSInteger, YQCustomKeyboardViewType) {
     YQCustomKeyboardViewTypeCalculator  = 4,  //计算器键盘
 };
 
+@class YQCustomKeyboardView;
+
 @protocol YQCustomKeyboardViewDelegate <NSObject>
 @required
-- (void)customKeyboardInputKey:(NSString *)key;
-- (void)customKeyboardDeleteKey;
+- (void)customKeyboard:(YQCustomKeyboardView *)keyboardView inputKey:(NSString *)key;
+- (void)customKeyboardDeleteKey:(YQCustomKeyboardView *)keyboardView;
 @end
-
 
 @interface YQCustomKeyboardView : UIView
 
@@ -37,3 +38,4 @@ typedef NS_ENUM(NSInteger, YQCustomKeyboardViewType) {
 - (void)changeCharacterTypeToFirst;
 - (void)changeProvinceTypeToFirst;
 @end
+

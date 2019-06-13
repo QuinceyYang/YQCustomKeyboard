@@ -159,14 +159,14 @@
     NSLog(@"notification = %@", notification);
     UITextField *textField = (UITextField *)notification.object;
     if (textField == self.textField) {
-        NSInteger count = self.labelArr.lastObject.hidden==NO?self.labelArr.count:self.labelArr.count-1;
+        //NSInteger count = self.labelArr.lastObject.hidden==NO?self.labelArr.count:self.labelArr.count-1;
         //[YQTools limitChatCount:notification length:count];
     }
     
 }
 
 #pragma mark - < YQCustomKeyboardViewDelegate >
-- (void)customKeyboardInputKey:(NSString *)key
+- (void)customKeyboard:(YQCustomKeyboardView *)keyboardView inputKey:(NSString *)key
 {
     NSLog(@"key = %@",key);
     NSInteger count = self.labelArr.lastObject.hidden==NO?self.labelArr.count:self.labelArr.count-1;
@@ -190,7 +190,7 @@
     //}
 }
 
-- (void)customKeyboardDeleteKey
+- (void)customKeyboardDeleteKey:(YQCustomKeyboardView *)keyboardView
 {
     if (self.textField.text.length <= 0) {
         return;

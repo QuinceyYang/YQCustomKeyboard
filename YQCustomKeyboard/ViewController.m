@@ -75,7 +75,7 @@
 }
 
 #pragma mark - < YQCustomKeyboardViewDelegate >
-- (void)customKeyboardInputKey:(NSString *)key
+- (void)customKeyboard:(YQCustomKeyboardView *)keyboardView inputKey:(NSString *)key
 {
     NSLog(@"key = %@",key);
     if (self.textField.text) {
@@ -87,7 +87,7 @@
     
 }
 
-- (void)customKeyboardDeleteKey
+- (void)customKeyboardDeleteKey:(YQCustomKeyboardView *)keyboardView
 {
     if (self.textField.text) {
         if (self.textField.text.length>0) {
